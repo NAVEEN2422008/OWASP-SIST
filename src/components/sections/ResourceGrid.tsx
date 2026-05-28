@@ -10,6 +10,7 @@ import {
   PlaySquare,
   ShieldCheck,
   Search,
+  SearchX,
 } from "lucide-react";
 import { ResourceItem } from "@/data/resources";
 
@@ -52,7 +53,7 @@ export default function ResourceGrid({ resources }: { resources: ResourceItem[] 
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`rounded-full border px-5 py-2 text-sm transition-colors ${
+              className={`rounded-full border px-5 py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
                 filter === category
                   ? "border-white text-white bg-white/10"
                   : "border-white/20 text-white/60 hover:border-white/40 hover:text-white"
@@ -77,8 +78,8 @@ export default function ResourceGrid({ resources }: { resources: ResourceItem[] 
         </div>
       </div>
 
-      <motion.div layout className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-        <AnimatePresence>
+      <motion.div layout className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3 min-h-[300px]">
+        <AnimatePresence mode="popLayout">
           {filteredResources.map((item) => {
             const Icon = iconMap[item.category] || PlaySquare;
             return (
@@ -88,11 +89,11 @@ export default function ResourceGrid({ resources }: { resources: ResourceItem[] 
                 target="_blank"
                 rel="noreferrer"
                 layout
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="group block h-full"
+                className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-2xl"
               >
                 <div className="h-full rounded-2xl border border-white/10 bg-[#050505] p-6 transition-colors hover:border-white/30 hover:bg-[#0a0a0a] flex flex-col">
                   <div className="mb-6 flex items-start justify-between gap-4">
@@ -121,9 +122,22 @@ export default function ResourceGrid({ resources }: { resources: ResourceItem[] 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="col-span-full py-20 text-center text-white/40 font-light"
+              exit={{ opacity: 0 }}
+              className="col-span-full py-24 flex flex-col items-center justify-center text-center"
             >
-              No matching resources found. Try another term or category.
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/40">
+                <SearchX className="h-8 w-8" strokeWidth={1} />
+              </div>
+              <h3 className="text-xl font-medium text-white mb-2">No resources found</h3>
+              <p className="text-white/40 font-light max-w-sm mb-6">
+                We couldn&apos;t find anything matching &quot;{search}&quot;. Try adjusting your search or category filter.
+              </p>
+              <button 
+                onClick={() => { setSearch(""); setFilter("All"); }}
+                className="text-sm border border-white/20 px-6 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                Clear Filters
+              </button>
             </motion.div>
           )}
         </AnimatePresence>

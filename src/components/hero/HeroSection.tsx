@@ -15,7 +15,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
   useEffect(() => {
     registerGsapPlugins();
     if (!titleRef.current) return;
-    const split = new SplitType(titleRef.current, { types: "chars" });
+    const split = new SplitType(titleRef.current, { types: "words, chars" });
 
     gsap.from(split.chars, {
       y: 40,

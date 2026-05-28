@@ -22,7 +22,7 @@ export default function CyberCard({
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.55, delay }}
       className={cn(
-        "glass-panel rounded-[1.75rem] p-7 border border-white/10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-premium",
+        "glass-panel rounded-[1.75rem] p-7 border border-white/10 bg-[#050505] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/5",
         className,
       )}
     >

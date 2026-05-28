@@ -12,6 +12,12 @@ export default function MatrixCursor() {
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
+    
+    // Disable on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      cursor.style.display = 'none';
+      return;
+    }
     // Hide native cursor
     document.body.style.cursor = 'none';
     // GSAP quickTo for x/y
