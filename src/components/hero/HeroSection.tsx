@@ -17,12 +17,12 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
     if (!titleRef.current) return;
     const split = new SplitType(titleRef.current, { types: "words" });
 
-    gsap.from(split.words, {
-      y: 30,
+    gsap.from(split.chars, {
+      y: 75,
       opacity: 0,
-      stagger: 0.05,
-      duration: 1.2,
-      ease: "expo.out",
+      stagger: 0.02,
+      duration: 1,
+      ease: "power3.out",
     });
 
     if (bgLogoRef.current) {
@@ -95,7 +95,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
             ref={titleRef}
             className="mb-8 text-5xl font-heading font-medium tracking-tight text-white sm:text-6xl lg:text-7xl leading-tight"
           >
-            Empowering the Next Generation<br className="hidden sm:block" /> of Security.
+            Empowering the Next Generation<br /> of Security.
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
