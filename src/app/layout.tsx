@@ -34,8 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary overflow-x-hidden">
+        <Header />
         <ClientLayout>
-          <Header />
           <main className="grow">{children}</main>
           <Footer />
         </ClientLayout>
