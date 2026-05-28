@@ -92,10 +92,11 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
           </p>
 
           <h1
-            ref={titleRef}
-            className="mb-8 text-[2.75rem] font-heading font-medium tracking-tight text-white sm:text-5xl lg:text-[5.5rem] leading-[1.1]"
+            className="mb-8 font-heading font-medium tracking-tight text-white leading-[1.1]"
+            style={{ fontSize: "clamp(2.2rem, 6.5vw, 5rem)" }}
           >
-            Empowering the Next Generation<br />of Security.
+            <span className="block">Empowering the Next Generation</span>
+            <span className="block">of Security.</span>
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
