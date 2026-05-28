@@ -56,7 +56,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
       {/* Soft gradient to fade out bottom */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
-      <div className="page-wrap relative z-10 flex flex-col items-center text-center mt-20">
+      <div className="page-wrap relative z-10 flex flex-col items-center text-center mt-28 sm:mt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

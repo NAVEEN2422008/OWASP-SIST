@@ -1,7 +1,0 @@
-const MDXReact = require("@mdx-js/react");
-
-const defaultExport = MDXReact.default || MDXReact;
-
-module.exports = defaultExport;
-module.exports.MDXProvider = MDXReact.MDXProvider;
-module.exports.useMDXComponents = MDXReact.useMDXComponents;
