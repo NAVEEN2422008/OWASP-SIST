@@ -1,0 +1,164 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #05060c;
+  --foreground: #f8fbff;
+  --surface: #091018;
+  --surface-strong: rgba(255, 255, 255, 0.05);
+  --surface-soft: rgba(255, 255, 255, 0.02);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text-primary: #f8fbff;
+  --text-muted: #abb6c8;
+  --text-soft: rgba(248, 251, 255, 0.75);
+  --accent: #84d7ff;
+  --accent-soft: rgba(132, 215, 255, 0.16);
+  --ring: rgba(132, 215, 255, 0.45);
+  --radius: 1rem;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.dark {
+  --background: #05060c;
+  --foreground: #f8fbff;
+  --surface: #091018;
+  --surface-strong: rgba(255, 255, 255, 0.05);
+  --surface-soft: rgba(255, 255, 255, 0.02);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text-primary: #f8fbff;
+  --text-muted: #abb6c8;
+  --text-soft: rgba(248, 251, 255, 0.75);
+  --accent: #84d7ff;
+  --accent-soft: rgba(132, 215, 255, 0.16);
+  --ring: rgba(132, 215, 255, 0.45);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--foreground);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--background);
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--text-muted);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--background);
+  --color-destructive: #ff4d6d;
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--border);
+  --color-input: rgba(255, 255, 255, 0.08);
+  --color-input-background: rgba(255, 255, 255, 0.06);
+  --color-switch-background: #374151;
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+    background: var(--background);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgba(132, 215, 255, 0.05), transparent 32%), var(--background);
+    color: var(--foreground);
+    font-family: 'DM Sans', sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    line-height: 1.12;
+  }
+
+  body, input, textarea, button, select {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  ::selection {
+    background: rgba(132, 215, 255, 0.24);
+    color: var(--background);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .glass-panel:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .page-section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-wrap {
+    width: min(100% - 2rem, 1240px);
+    margin: 0 auto;
+  }
+
+  .section-kicker {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    color: var(--foreground);
+    font-size: clamp(2.5rem, 4vw, 4.4rem);
+    letter-spacing: -0.04em;
+  }
+
+  .section-copy {
+    color: var(--text-soft);
+    font-size: 1.06rem;
+    line-height: 1.85;
+  }
+
+  .page-divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  }
+
+  .font-heading {
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+}

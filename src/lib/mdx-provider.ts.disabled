@@ -1,0 +1,5 @@
+import * as MDXReact from "@mdx-js/react";
+
+export default MDXReact;
+export const MDXProvider = MDXReact.MDXProvider;
+export const useMDXComponents = MDXReact.useMDXComponents;
