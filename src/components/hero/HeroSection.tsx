@@ -95,7 +95,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
             ref={titleRef}
             className="mb-8 text-5xl font-heading font-medium tracking-tight text-white sm:text-6xl lg:text-7xl leading-tight"
           >
-            Empowering the Next Generation<br /> of Security.
+            Empowering the Next Generation<br />of Security.
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
