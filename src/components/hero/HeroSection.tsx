@@ -74,7 +74,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          className="max-w-5xl w-full"
         >
           <div className="mb-6 flex justify-center">
             <Image
@@ -93,7 +93,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
 
           <h1
             ref={titleRef}
-            className="mb-8 text-5xl font-heading font-medium tracking-tight text-white sm:text-6xl lg:text-7xl leading-tight"
+            className="mb-8 text-[2.75rem] font-heading font-medium tracking-tight text-white sm:text-5xl lg:text-[5.5rem] leading-[1.1]"
           >
             Empowering the Next Generation<br />of Security.
           </h1>
