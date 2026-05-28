@@ -15,14 +15,14 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
   useEffect(() => {
     registerGsapPlugins();
     if (!titleRef.current) return;
-    const split = new SplitType(titleRef.current, { types: "words, chars" });
+    const split = new SplitType(titleRef.current, { types: "words" });
 
-    gsap.from(split.chars, {
-      y: 40,
+    gsap.from(split.words, {
+      y: 30,
       opacity: 0,
-      stagger: 0.02,
-      duration: 1,
-      ease: "power3.out",
+      stagger: 0.05,
+      duration: 1.2,
+      ease: "expo.out",
     });
 
     if (bgLogoRef.current) {
@@ -65,7 +65,7 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
           />
         </div>
       </div>
-      
+
       {/* Soft gradient to fade out bottom */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
@@ -93,9 +93,9 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
 
           <h1
             ref={titleRef}
-            className="mb-8 text-5xl font-heading font-light tracking-tight text-white sm:text-6xl lg:text-7xl"
+            className="mb-8 text-5xl font-heading font-medium tracking-tight text-white sm:text-6xl lg:text-7xl leading-tight"
           >
-            Empowering the Next Generation of Security.
+            Empowering the Next Generation<br className="hidden sm:block" /> of Security.
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
