@@ -14,17 +14,6 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
 
   useEffect(() => {
     registerGsapPlugins();
-    if (!titleRef.current) return;
-    const split = new SplitType(titleRef.current, { types: "words" });
-
-    gsap.from(split.chars, {
-      y: 75,
-      opacity: 0,
-      stagger: 0.02,
-      duration: 1,
-      ease: "power3.out",
-    });
-
     if (bgLogoRef.current) {
       gsap.to(bgLogoRef.current, {
         y: 100,
@@ -35,8 +24,6 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
         },
       });
     }
-
-    return () => split.revert();
   }, []);
 
   const scrollToNext = () => {
@@ -93,9 +80,9 @@ export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?:
 
           <h1
             className="mb-8 font-heading font-medium tracking-tight text-white leading-[1.1]"
-            style={{ fontSize: "clamp(2.2rem, 6.5vw, 5rem)" }}
+            style={{ fontSize: "clamp(1.8rem, 4.2vw, 4rem)" }}
           >
-            <span className="block">Empowering the Next Generation</span>
+            <span className="block whitespace-nowrap">Empowering the Next Generation</span>
             <span className="block">of Security.</span>
           </h1>
           <motion.p
