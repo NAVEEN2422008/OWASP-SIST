@@ -8,7 +8,7 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import { registerGsapPlugins } from "@/lib/gsapClient";
 
-export default function HeroSection({ logoSrc = "/logo-white.png" }: { logoSrc?: string }) {
+export default function HeroSection({ logoSrc = "/owasp_full_logo.png" }: { logoSrc?: string }) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const bgLogoRef = useRef<HTMLDivElement>(null);
 

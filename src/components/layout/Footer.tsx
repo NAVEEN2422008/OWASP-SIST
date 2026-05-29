@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           <div className="flex items-center gap-4">
             <Image
-              src="/logo-white.png"
+              src="/owasp_full_logo.png"
               alt="OWASP SIST"
               width={140}
               height={50}

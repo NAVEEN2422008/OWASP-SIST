@@ -10,7 +10,7 @@ import OwaspReferencesSection from "@/components/sections/OwaspReferencesSection
 export default function Home() {
   return (
     <div className="bg-bg-primary text-text-primary">
-      <HeroSection logoSrc="/logo-white.png" />
+      <HeroSection logoSrc="/owasp_full_logo.png" />
       <AboutSection />
       <WhatWeDoSection />
       <WhyOwaspSection />

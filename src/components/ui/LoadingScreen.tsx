@@ -51,7 +51,7 @@ export default function LoadingScreen() {
                             {/* Logo image */}
                             <div className="relative w-20 h-20 sm:w-28 sm:h-28">
                                 <Image
-                                    src="/logo-white.png"
+                                    src="/owasp_full_logo.png"
                                     alt="OWASP SIST Loading"
                                     fill
                                     sizes="112px"

@@ -37,7 +37,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
           <Image
-            src="/logo-white.png"
+            src="/owasp_full_logo.png"
             alt="OWASP SIST"
             width={160}
             height={56}
@@ -76,7 +76,7 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
               <Image
-                src="/logo-white.png"
+                src="/owasp_full_logo.png"
                 alt="OWASP SIST"
                 width={140}
                 height={48}
