@@ -25,8 +25,24 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Control body overflow when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.style.touchAction = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.touchAction = "auto";
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <header
+    <>
+      <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         isScrolled
@@ -70,10 +86,12 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu Fullscreen Overlay */}
+      </header>
+
+      {/* Mobile Menu Fullscreen Overlay - OUTSIDE of header to fix stacking context clipping */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black flex flex-col px-6 py-6 animate-in fade-in duration-300">
-          <div className="flex items-center justify-between">
+        <div className="lg:hidden fixed inset-0 z-[60] bg-black/95 backdrop-blur-sm flex flex-col px-6 py-6">
+          <div className="flex items-center justify-between shrink-0">
             <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
               <Image
                 src="/owasp_full_logo.png"
@@ -86,27 +104,31 @@ export default function Header() {
             </Link>
             <button
               type="button"
-              className="-m-2.5 p-2.5 text-white/80 hover:text-white"
+              className="-m-2.5 p-2.5 text-white/80 hover:text-white transition-colors"
               onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
             >
               <span className="sr-only">Close menu</span>
               <X className="h-7 w-7" aria-hidden="true" />
             </button>
           </div>
-          <div className="mt-16 flex flex-col space-y-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block text-3xl font-light text-white/80 hover:text-white transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+
+          <nav className="mt-8 flex-1 overflow-y-auto hide-scrollbar">
+            <div className="flex flex-col space-y-1 pb-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block px-4 py-4 text-lg sm:text-xl font-light text-white/80 hover:text-white hover:bg-white/5 transition-colors rounded"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }

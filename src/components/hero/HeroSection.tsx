@@ -56,40 +56,40 @@ export default function HeroSection({ logoSrc = "/owasp_full_logo.png" }: { logo
       {/* Soft gradient to fade out bottom */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
-      <div className="page-wrap relative z-10 flex flex-col items-center text-center mt-28 sm:mt-32">
+      <div className="page-wrap relative z-10 flex flex-col items-center text-center mt-16 sm:mt-24 md:mt-28 lg:mt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-5xl w-full"
+          className="max-w-5xl w-full px-4 sm:px-0"
         >
-          <div className="mb-6 flex justify-center">
+          <div className="mb-4 sm:mb-6 flex justify-center">
             <Image
               src={logoSrc}
               alt="OWASP SIST logo"
               width={160}
               height={56}
-              className="h-14 w-auto object-contain opacity-90"
+              className="h-10 sm:h-14 w-auto object-contain opacity-90"
               priority
               draggable={false}
             />
           </div>
-          <p className="mb-8 text-sm uppercase tracking-[0.4em] text-white/50 font-mono">
+          <p className="mb-4 sm:mb-8 text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.4em] text-white/50 font-mono">
             Sathyabama Institute of Science and Technology
           </p>
 
           <h1
-            className="mb-8 font-heading font-medium tracking-tight text-white leading-[1.1]"
-            style={{ fontSize: "clamp(1.8rem, 4.2vw, 4rem)" }}
+            className="mb-6 sm:mb-8 font-heading font-medium tracking-tight text-white leading-[1.1] flex flex-col items-center w-full"
+            style={{ fontSize: "clamp(1.2rem, 6vw, 4rem)" }}
           >
             <span className="block whitespace-nowrap">Empowering the Next Generation</span>
-            <span className="block">of Security.</span>
+            <span className="block whitespace-nowrap">of Security.</span>
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60 font-light"
+            className="mx-auto max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-white/60 font-light"
           >
             A premium student chapter dedicated to practical application security training, hands-on CTFs, and a community built around OWASP best practices.
           </motion.p>
@@ -100,16 +100,16 @@ export default function HeroSection({ logoSrc = "/owasp_full_logo.png" }: { logo
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="mt-14 flex flex-col items-center gap-6 sm:flex-row sm:justify-center"
+          className="mt-8 sm:mt-12 md:mt-14 flex flex-col items-center gap-3 sm:gap-6 sm:flex-row sm:justify-center"
         >
           <button
-            className="rounded-full bg-white text-black px-8 py-3.5 text-sm font-medium transition hover:bg-white/90"
+            className="rounded-full bg-white text-black px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-medium transition hover:bg-white/90"
             onClick={() => document.getElementById("ctf")?.scrollIntoView({ behavior: "smooth" })}
           >
             View Upcoming CTFs
           </button>
           <button
-            className="rounded-full bg-transparent border border-white/20 text-white px-8 py-3.5 text-sm font-medium transition hover:bg-white/5"
+            className="rounded-full bg-transparent border border-white/20 text-white px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-medium transition hover:bg-white/5"
             onClick={() => document.getElementById("resources")?.scrollIntoView({ behavior: "smooth" })}
           >
             Explore Resources
