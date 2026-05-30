@@ -17,9 +17,10 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
     target: targetRef,
   });
 
-  // Calculate horizontal translation based on number of events.
-  // We want the total scrollable horizontal width to scale with the number of items.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+  // Calculate horizontal translation.
+  // We translate the track by its total width (-100%) minus one viewport width (+100vw) 
+  // so the last card aligns perfectly with the right edge of the screen on any device.
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-black">
@@ -41,7 +42,7 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
         </div>
 
         {/* The horizontal moving track */}
-        <motion.div style={{ x }} className="flex gap-8 px-6 md:px-24 pt-32 pb-16 items-center">
+        <motion.div style={{ x }} className="flex w-max gap-8 px-6 md:px-24 pt-32 pb-16 items-center">
           
           {events.length === 0 ? (
             <div className="text-white/40 italic flex-shrink-0 w-80 text-center border border-white/10 p-10 rounded-2xl">

@@ -46,7 +46,7 @@ function parseEventsMarkdown(
         topic: topicMatch ? topicMatch[1].trim() : undefined,
         venue: venueMatch ? venueMatch[1].trim() : undefined,
         dateStr: dateMatch ? dateMatch[1].trim() : undefined,
-        imageUrl: imageMatch ? imageMatch[1].trim() : undefined,
+        imageUrl: imageMatch ? encodeURI(imageMatch[1].trim()) : undefined,
         status,
       });
     }
