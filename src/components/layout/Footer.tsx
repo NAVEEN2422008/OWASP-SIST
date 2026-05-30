@@ -29,9 +29,6 @@ export default function Footer() {
             <Link href="https://linkedin.com/company/owasp-sist" target="_blank" className="transition hover:text-white">
               LinkedIn
             </Link>
-            <Link href="https://twitter.com/owasp-sist" target="_blank" className="transition hover:text-white">
-              Twitter
-            </Link>
             <Link href="mailto:contact@sist.owasp.org" className="flex items-center gap-2 transition hover:text-white">
               <Mail className="h-4 w-4" />
               Email

@@ -2,14 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Button from "@/components/ui/Button";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import SplitType from "split-type";
 import { registerGsapPlugins } from "@/lib/gsapClient";
 
 export default function HeroSection({ logoSrc = "/owasp_full_logo.png" }: { logoSrc?: string }) {
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const bgLogoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,10 +23,18 @@ export default function HeroSection({ logoSrc = "/owasp_full_logo.png" }: { logo
     }
   }, []);
 
-  const scrollToNext = () => {
-    const nextSection = document.getElementById("about");
-    if (nextSection) nextSection.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const header = document.querySelector("header");
+    const offset = header?.clientHeight ?? 88;
+    const top = section.getBoundingClientRect().top + window.scrollY - offset;
+
+    window.scrollTo({ top, behavior: "smooth" });
   };
+
+  const scrollToNext = () => scrollToSection("about");
 
   return (
     <section className="relative flex min-h-[100vh] flex-col justify-center overflow-hidden page-section bg-black">
@@ -104,13 +109,13 @@ export default function HeroSection({ logoSrc = "/owasp_full_logo.png" }: { logo
         >
           <button
             className="rounded-full bg-white text-black px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-medium transition hover:bg-white/90"
-            onClick={() => document.getElementById("ctf")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => scrollToSection("ctf")}
           >
             View Upcoming CTFs
           </button>
           <button
             className="rounded-full bg-transparent border border-white/20 text-white px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-medium transition hover:bg-white/5"
-            onClick={() => document.getElementById("resources")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => scrollToSection("resources")}
           >
             Explore Resources
           </button>

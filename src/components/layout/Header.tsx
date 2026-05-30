@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -17,6 +17,21 @@ const navigation = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    event.preventDefault();
+
+    const target = document.querySelector(href) as HTMLElement | null;
+    if (!target) return;
+
+    const header = document.querySelector("header");
+    const offset = header?.clientHeight ?? 88;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+    window.scrollTo({ top, behavior: "smooth" });
+    setMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -67,6 +82,7 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
+              onClick={(event) => handleNavClick(event, item.href)}
               className="text-sm font-medium tracking-wide text-white/70 transition-colors hover:text-white relative group"
             >
               {item.name}
@@ -118,8 +134,8 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={(event) => handleNavClick(event, item.href)}
                   className="block px-4 py-4 text-lg sm:text-xl font-light text-white/80 hover:text-white hover:bg-white/5 transition-colors rounded"
-                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>

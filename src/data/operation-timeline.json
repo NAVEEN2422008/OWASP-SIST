@@ -1,0 +1,216 @@
+[
+  {
+    "slug": "career-catalyst",
+    "title": "Career Catalyst",
+    "description": "A Talk event.",
+    "dateISO": "2024-02-05",
+    "dateLabel": "2024",
+    "dateStr": "05/02/2024 [OFFLINE EVENT]",
+    "theme": "Talk",
+    "category": "Talk",
+    "tags": [
+      "Talk"
+    ],
+    "speaker": "Mr. Pons Mudivai Arun, Product Leader (IAM), JumpCloud",
+    "venue": "Tmt. Soundrabai Auditorium, Sathyabama Centre for Advanced Studies",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/Event%2015.jpg?raw=true"
+  },
+  {
+    "slug": "careers-in-space-research",
+    "title": "Careers in Space Research",
+    "description": "A Talk event.",
+    "dateISO": "2023-08-28",
+    "dateLabel": "2023",
+    "dateStr": "28/08/2023 [OFFLINE EVENT]",
+    "theme": "Talk",
+    "category": "Talk",
+    "tags": [
+      "Talk"
+    ],
+    "speaker": "Mr. A. Kishore, Senior propellant Scientist, Canadian Space Agency",
+    "venue": "AI Super Computing Lab, Sathyabama Centre for Advanced Studies",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%2014.jpg?raw=true"
+  },
+  {
+    "slug": "exploring-the-skies-unveiling-the-potential-of-drones",
+    "title": "Exploring the Skies - Unveiling the Potential of Drones",
+    "description": "A Community event.",
+    "dateISO": "2023-07-14",
+    "dateLabel": "2023",
+    "dateStr": "14/07/2023 [OFFLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Mr. Pranav S. Rao, Director, Multi Dimensional Technologies (OPC) Pvt. Ltd.",
+    "venue": "Society for Computer Security, St.Paul's Block",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%2013.png?raw=true"
+  },
+  {
+    "slug": "art-of-hacking-series-2",
+    "title": "Art of Hacking (series #2)",
+    "description": "A CTF event.",
+    "dateISO": "2023-06-30",
+    "dateLabel": "2023",
+    "dateStr": "30/06/2023 [OFFLINE EVENT]",
+    "theme": "CTF",
+    "category": "CTF",
+    "tags": [
+      "CTF"
+    ],
+    "speaker": "Mr. Sriram Kesavan",
+    "venue": "TmT. Soundrabai Auditorium, Sathyabama Centre for Advanced Studies",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%2012.jpg?raw=true"
+  },
+  {
+    "slug": "art-of-hacking-series-1",
+    "title": "Art of Hacking (series #1)",
+    "description": "A CTF event.",
+    "dateISO": "2023-06-27",
+    "dateLabel": "2023",
+    "dateStr": "27/06/2023 & 28/06/2023 [OFFLINE EVENT]",
+    "theme": "CTF",
+    "category": "CTF",
+    "tags": [
+      "CTF"
+    ],
+    "speaker": "Mr. Sriram Kesavan",
+    "venue": "Machine Vision Lab, II Floor, Society For Computer Security, St.Paul's Block",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%2011.jpg?raw=true"
+  },
+  {
+    "slug": "cyber-security-101-your-first-line-of-defense",
+    "title": "Cyber Security 101 - Your First line of Defense",
+    "description": "A Community event.",
+    "dateISO": "2023-03-28",
+    "dateLabel": "2023",
+    "dateStr": "28/03/2023 [OFFLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Ms. Gabriela Sharon R",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%2010.jpg?raw=true"
+  },
+  {
+    "slug": "cyber-matrix-capture-the-flag-treasure-hunt",
+    "title": "Cyber Matrix (Capture The Flag & Treasure Hunt)",
+    "description": "A CTF event.",
+    "dateISO": "2023-03-17",
+    "dateLabel": "2023",
+    "dateStr": "17/03/2023 [OFFLINE EVENT]",
+    "theme": "CTF",
+    "category": "CTF",
+    "tags": [
+      "CTF"
+    ],
+    "venue": "New Auditorium, Sathyabama Institute of Science and Technology",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%209.jpg?raw=true"
+  },
+  {
+    "slug": "sist-ctf-2-0-cyber-security-gamified-capture-the-flag",
+    "title": "SIST CTF 2.0 - Cyber Security Gamified (Capture The Flag)",
+    "description": "A CTF event.",
+    "dateISO": "2023-02-22",
+    "dateLabel": "2023",
+    "dateStr": "22/02/2023 [OFFLINE EVENT]",
+    "theme": "CTF",
+    "category": "CTF",
+    "tags": [
+      "CTF"
+    ],
+    "venue": "Sathyabama Institute of Science and Technology",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%208.png?raw=true"
+  },
+  {
+    "slug": "diving-deep-into-cyber-security-series-2-first-year-anniversary-celebration",
+    "title": "Diving deep into Cyber Security (series #2) - First Year Anniversary Celebration",
+    "description": "A Community event.",
+    "dateISO": "2022-12-01",
+    "dateLabel": "2022",
+    "dateStr": "01/12/2022 & 02/12/2022 [OFFLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Mr. Sriram Kesavan, Mr. Thaya Govzig",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%207.jpg?raw=true"
+  },
+  {
+    "slug": "sist-ctf-cyber-security-gamified-capture-the-flag",
+    "title": "SIST CTF - Cyber Security Gamified (Capture The Flag)",
+    "description": "A CTF event.",
+    "dateISO": "2022-09-05",
+    "dateLabel": "2022",
+    "dateStr": "05/09/2022 & 06/09/2022 [OFFLINE EVENT]",
+    "theme": "CTF",
+    "category": "CTF",
+    "tags": [
+      "CTF"
+    ],
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%206.jpeg?raw=true"
+  },
+  {
+    "slug": "diving-deep-into-cyber-security-series-1",
+    "title": "Diving deep into Cyber Security (series #1)",
+    "description": "A Community event.",
+    "dateISO": "2022-07-08",
+    "dateLabel": "2022",
+    "dateStr": "08/07/2022 [OFFLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Mr. Sriram Kesavan, Mr. Thaya Govzig",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/events/event%205.jpeg?raw=true"
+  },
+  {
+    "slug": "mr-jones-martin",
+    "title": "Mr. Jones Martin",
+    "description": "A Community event.",
+    "dateISO": "2022-05-18",
+    "dateLabel": "2022",
+    "dateStr": "18/05/2022 [OFFLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Mr. Jones Martin",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/Jones%20Martin/Jones%20Martin-Poster.jpeg?raw=true"
+  },
+  {
+    "slug": "mr-kishore-hariram",
+    "title": "Mr. Kishore Hariram",
+    "description": "A Community event.",
+    "dateISO": "2021-12-02",
+    "dateLabel": "2021",
+    "dateStr": "02/12/2021 [ONLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Mr. Kishore Hariram",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/OWASP%20POSTER.jpg"
+  },
+  {
+    "slug": "mr-abisheik-m",
+    "title": "Mr. Abisheik M",
+    "description": "A Community event.",
+    "dateISO": "2021-03-25",
+    "dateLabel": "2021",
+    "dateStr": "25/03/2021 [OFFLINE EVENT]",
+    "theme": "Community",
+    "category": "Community",
+    "tags": [
+      "Community"
+    ],
+    "speaker": "Mr. Abisheik M",
+    "imageUrl": "https://raw.githubusercontent.com/OWASP/www-chapter-sathyabama-institute-of-science-and-technology/main/assets/images/Abisheik%20M/Abisheik%20M-Poster.jpeg?raw=true"
+  }
+]

@@ -52,7 +52,7 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
           className="text-white/45 text-sm font-light max-w-xs leading-relaxed"
         >
           {events.length} event{events.length !== 1 ? "s" : ""} · newest first ·
-          live from GitHub
+          sourced from local JSON
         </motion.p>
       </div>
 
