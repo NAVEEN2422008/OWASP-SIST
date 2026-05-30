@@ -1,5 +1,101 @@
 [
   {
+    "slug": "css-battles-2026",
+    "title": "CSS Battles",
+    "description": "A hands-on CSS challenge competition.",
+    "dateISO": "2026-06-24",
+    "dateLabel": "2026",
+    "dateStr": "24/06/2026",
+    "theme": "Competition",
+    "category": "Community",
+    "tags": [
+      "Competition"
+    ],
+    "speaker": "",
+    "venue": "Seminar Hall 3",
+    "imageUrl": "/assets/images/events/css-battles-2026.jpg"
+  },
+  {
+    "slug": "hack-the-planet-owasp-week-2026",
+    "title": "Hack The Planet (OWASP Week)",
+    "description": "A multi-day chapter week of events and tracks.",
+    "dateISO": "2026-06-22",
+    "dateLabel": "2026",
+    "dateStr": "22/06/2026 - 26/06/2026",
+    "theme": "OWASP Week",
+    "category": "Community",
+    "tags": [
+      "OWASP Week"
+    ],
+    "speaker": "",
+    "venue": "SCAS",
+    "imageUrl": "/assets/images/events/hack-the-planet-owasp-week-2026.jpg"
+  },
+  {
+    "slug": "wargames-ctf-2026",
+    "title": "CTF 3.0 - WARGAMES",
+    "description": "Competitive capture-the-flag event.",
+    "dateISO": "2026-06-25",
+    "dateLabel": "2026",
+    "dateStr": "25/06/2026",
+    "theme": "CTF",
+    "category": "CTF",
+    "tags": [
+      "CTF"
+    ],
+    "speaker": "",
+    "venue": "Nexus Hub",
+    "imageUrl": "/assets/images/events/wargames-ctf-2026.jpg"
+  },
+  {
+    "slug": "cybersecurity-masterclass-2026",
+    "title": "Cyber Security Masterclass",
+    "description": "An expert-led masterclass covering advanced topics.",
+    "dateISO": "2026-06-23",
+    "dateLabel": "2026",
+    "dateStr": "23/06/2026",
+    "theme": "Masterclass",
+    "category": "Talk",
+    "tags": [
+      "Masterclass"
+    ],
+    "speaker": "",
+    "venue": "Seminar Hall 3",
+    "imageUrl": "/assets/images/events/cybersecurity-masterclass-2026.jpg"
+  },
+  {
+    "slug": "zerox-hackathon-2026",
+    "title": "Zerox Hackathon",
+    "description": "A 24-hour hacking marathon.",
+    "dateISO": "2026-06-26",
+    "dateLabel": "2026",
+    "dateStr": "26/06/2026",
+    "theme": "Hackathon",
+    "category": "Community",
+    "tags": [
+      "Hackathon"
+    ],
+    "speaker": "",
+    "venue": "Nexus Hub",
+    "imageUrl": "/assets/images/events/zerox-hackathon-2026.jpg"
+  },
+  {
+    "slug": "expert-talk-2026",
+    "title": "Expert Talk",
+    "description": "A guest expert talk and panel.",
+    "dateISO": "2026-06-23",
+    "dateLabel": "2026",
+    "dateStr": "23/06/2026",
+    "theme": "Talk",
+    "category": "Talk",
+    "tags": [
+      "Talk"
+    ],
+    "speaker": "",
+    "venue": "Dr. Soundrabai Auditorium",
+    "imageUrl": "/assets/images/events/expert-talk-2026.jpg"
+  },
+  {
     "slug": "career-catalyst",
     "title": "Career Catalyst",
     "description": "A Talk event.",
