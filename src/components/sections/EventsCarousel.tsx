@@ -23,10 +23,10 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-black">
-      <div className="sticky top-0 flex h-screen flex-col justify-start pt-24 md:pt-32 pb-10 overflow-hidden">
+      <div className="sticky top-0 flex h-screen flex-col justify-start pt-16 md:pt-24 pb-6 overflow-hidden">
         
         {/* Timeline Header Area - Normal flow to prevent overlap */}
-        <div className="px-6 md:px-24 z-10 flex flex-col pointer-events-none mb-8 sm:mb-12">
+        <div className="px-6 md:px-24 z-10 flex flex-col pointer-events-none mb-4 sm:mb-8">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,10 +71,10 @@ function EventCard({ event, index }: { event: ParsedEvent; index: number }) {
   const isUpcoming = event.status === "upcoming";
 
   return (
-    <div className="group relative flex-shrink-0 w-[85vw] sm:w-[450px] flex flex-col rounded-3xl border border-white/10 bg-[#080808] overflow-hidden hover:border-white/20 transition-colors duration-500 h-[60vh] min-h-[420px] max-h-[500px]">
+    <div className="group relative flex-shrink-0 w-[85vw] sm:w-[450px] flex flex-col rounded-3xl border border-white/10 bg-[#080808] overflow-hidden hover:border-white/20 transition-colors duration-500 h-[55vh] min-h-[350px] max-h-[500px]">
       
       {/* Top Image Area */}
-      <div className="relative h-48 w-full bg-[#111] overflow-hidden border-b border-white/5 flex-shrink-0">
+      <div className="relative h-32 sm:h-48 w-full bg-[#111] overflow-hidden border-b border-white/5 flex-shrink-0">
         {event.imageUrl ? (
           <Image
             src={event.imageUrl}
