@@ -16,7 +16,7 @@ const stats = [
     icon: Trophy,
   },
   {
-    label: "OWASP References",
+    label: "Security References",
     value: resources.filter((resource) => resource.category === "OWASP").length,
     icon: ShieldCheck,
   },

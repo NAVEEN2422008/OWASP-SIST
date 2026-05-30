@@ -11,7 +11,6 @@ const navigation = [
   { name: "What We Do", href: "#what-we-do" },
   { name: "Why OWASP", href: "#why-owasp" },
   { name: "Events", href: "#events" },
-  { name: "Resources", href: "#resources" },
   { name: "Contact", href: "#contact" },
 ];
 

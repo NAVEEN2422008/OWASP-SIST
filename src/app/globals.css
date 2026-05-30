@@ -305,3 +305,17 @@ h6,
     padding: 0 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .page-section {
+    padding: 3rem 0;
+  }
+
+  .page-wrap {
+    padding: 0 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+  }
+}
