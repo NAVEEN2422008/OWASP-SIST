@@ -11,64 +11,84 @@ interface EventsCarouselProps {
 }
 
 export default function EventsCarousel({ events }: EventsCarouselProps) {
-  const targetRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: trackRef,
     offset: ["start start", "end end"],
   });
 
-  // Translate the full row of cards from right-edge-flush to far left
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+  // Cards width = 340px + 24px gap each, n cards
+  // We always translate to show the last card — "-85%" covers up to ~20 cards cleanly
+  const xPct = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
     <div className="bg-black">
-      {/* ── Section header: scrolls normally so it disappears before cards pin ── */}
-      <div className="px-6 md:px-24 pt-24 md:pt-32 pb-16 md:pb-24">
+      {/* ── Header: sits above the scroll zone, disappears naturally ── */}
+      <div className="px-5 sm:px-8 md:px-20 lg:px-28 pt-20 md:pt-28 pb-12 md:pb-20">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/35"
+        >
+          Chapter History
+        </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl md:text-6xl font-heading font-light tracking-tight text-white mb-4"
+          className="font-heading font-light tracking-tight text-white mb-4 text-4xl sm:text-5xl md:text-6xl"
         >
           Operation Timeline
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-white/50 text-sm md:text-base font-light tracking-wide max-w-md"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="text-white/45 text-sm font-light max-w-xs leading-relaxed"
         >
-          Scroll to explore our upcoming and completed missions.
-          Live data from GitHub.
+          {events.length} event{events.length !== 1 ? "s" : ""} · newest first ·
+          live from GitHub
         </motion.p>
       </div>
 
       {/* ── Sticky horizontal scroll zone ── */}
-      {/* Height = how long user needs to scroll to traverse all cards */}
-      <section ref={targetRef} className="relative h-[400vh] bg-black">
-        {/* The sticky viewport window — full screen, clips only horizontally */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
-          {/* The horizontally translating row */}
+      {/*
+          Height controls how long the user scrolls before the section ends.
+          We add extra height proportional to number of events so the
+          user has enough scroll distance to reach the last card.
+      */}
+      <section
+        ref={trackRef}
+        style={{ height: `${Math.max(300, events.length * 45)}vh` }}
+        className="relative bg-black"
+      >
+        {/* The pinned viewport */}
+        <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+          {/* Translating track */}
           <motion.div
-            style={{ x }}
-            className="flex h-full items-center gap-6 pl-6 md:pl-24"
+            style={{ x: xPct }}
+            className="flex gap-5 sm:gap-6 items-stretch pl-5 sm:pl-8 md:pl-20 lg:pl-28 pr-16"
           >
             {events.length === 0 ? (
-              <EmptyState />
+              <div className="flex-shrink-0 w-72 border border-white/10 rounded-2xl p-10 text-white/30 text-sm italic text-center">
+                No events found. Check back soon.
+              </div>
             ) : (
-              events.map((event) => (
-                <EventCard key={event.id} event={event} />
+              events.map((event, i) => (
+                <EventCard key={event.id} event={event} index={i} />
               ))
             )}
 
-            {/* End cap */}
+            {/* End-cap */}
             {events.length > 0 && (
-              <div className="flex-shrink-0 w-24 md:w-48 flex flex-col items-center gap-3 opacity-30 pr-6">
-                <div className="h-px w-12 bg-white" />
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white text-center">
+              <div className="flex-shrink-0 w-20 flex flex-col items-center justify-center gap-3 opacity-25 pr-4">
+                <div className="h-px w-8 bg-white" />
+                <p className="font-mono text-[9px] uppercase tracking-widest text-white rotate-90 whitespace-nowrap">
                   End
                 </p>
               </div>
@@ -80,104 +100,121 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
   );
 }
 
-function EmptyState() {
-  return (
-    <div className="flex-shrink-0 w-80 text-white/40 italic text-center border border-white/10 p-10 rounded-2xl">
-      No events found.
-    </div>
-  );
-}
-
-function EventCard({ event }: { event: ParsedEvent }) {
+/* ─── Individual event card ─── */
+function EventCard({ event, index }: { event: ParsedEvent; index: number }) {
   const isUpcoming = event.status === "upcoming";
+  // Clean up date: strip "[OFFLINE EVENT]" label
+  const cleanDate = event.dateStr
+    ? event.dateStr.replace(/\s*\[.*?\]/g, "").trim()
+    : null;
 
   return (
-    <div
-      className="
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px -200px 0px 0px" }}
+      transition={{ duration: 0.55, delay: Math.min(index * 0.05, 0.3), ease: [0.16, 1, 0.3, 1] }}
+      className={`
         group relative flex-shrink-0 flex flex-col
-        rounded-2xl border border-white/10 bg-[#0a0a0a]
+        rounded-2xl border bg-[#090909]
+        transition-colors duration-500
         overflow-hidden
-        hover:border-white/25 transition-colors duration-500
-        w-[min(400px,80vw)]
-        h-[min(480px,calc(100vh-6rem))]
-      "
+        w-[min(340px,82vw)]
+        h-[min(460px,calc(100vh-9rem))]
+        ${isUpcoming ? "border-white/20 hover:border-white/40" : "border-white/8 hover:border-white/18"}
+      `}
     >
-      {/* ── Image ── */}
-      <div className="relative w-full flex-shrink-0 overflow-hidden bg-[#111]"
-           style={{ height: "45%" }}>
+      {/* ── Image (top ~42% of card) ── */}
+      <div
+        className="relative w-full flex-shrink-0 overflow-hidden bg-[#111] border-b border-white/5"
+        style={{ height: "42%" }}
+      >
         {event.imageUrl ? (
           <Image
             src={event.imageUrl}
             alt={event.title}
             fill
-            sizes="400px"
-            className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+            sizes="(max-width: 640px) 82vw, 340px"
+            className="object-cover opacity-75 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-700 ease-out"
           />
         ) : (
-          /* Elegant fallback: subtle grid + monogram */
+          /* Elegant no-image fallback */
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:24px_24px]" />
-            <span className="font-mono text-5xl font-bold text-white/5 select-none">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:20px_20px]" />
+            <span className="relative font-mono text-[42px] font-bold text-white/[0.04] select-none tracking-widest">
               OWASP
             </span>
           </div>
         )}
 
-        {/* Gradient overlay at bottom of image so text below reads cleanly */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+        {/* Bottom fade so card body reads cleanly under the image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/20 to-transparent" />
 
         {/* Status badge */}
         <div className="absolute top-3 left-3">
           <span
             className={`
               inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full
-              text-[9px] font-mono uppercase tracking-[0.18em] border backdrop-blur-md
-              ${isUpcoming
-                ? "bg-white/10 border-white/20 text-white"
-                : "bg-black/50 border-white/10 text-white/50"
+              text-[9px] font-mono uppercase tracking-[0.16em]
+              border backdrop-blur-sm
+              ${
+                isUpcoming
+                  ? "bg-white/10 border-white/25 text-white"
+                  : "bg-black/60 border-white/10 text-white/45"
               }
             `}
           >
-            <span className={`w-1.5 h-1.5 rounded-full ${isUpcoming ? "bg-white" : "bg-white/40"}`} />
+            <span
+              className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                isUpcoming ? "bg-white animate-pulse" : "bg-white/30"
+              }`}
+            />
             {isUpcoming ? "Upcoming" : "Completed"}
           </span>
         </div>
+
+        {/* Index counter top-right */}
+        <div className="absolute top-3 right-3 font-mono text-[10px] text-white/20 tabular-nums">
+          {String(index + 1).padStart(2, "0")}
+        </div>
       </div>
 
-      {/* ── Content ── */}
-      <div className="flex flex-col flex-grow px-6 py-5 overflow-hidden">
-        <h3 className="text-lg font-medium text-white leading-snug line-clamp-2 mb-3">
+      {/* ── Content body ── */}
+      <div className="flex flex-col flex-grow px-5 py-4 overflow-hidden min-h-0">
+        <h3 className="text-base font-medium text-white leading-snug line-clamp-2 mb-2 flex-shrink-0">
           {event.title}
         </h3>
 
         {event.topic && (
-          <p className="text-xs text-white/40 line-clamp-2 leading-relaxed font-light mb-4">
+          <p className="text-[11px] text-white/38 line-clamp-2 leading-relaxed font-light mb-3 flex-shrink-0">
             {event.topic}
           </p>
         )}
 
-        {/* Meta row pinned to bottom */}
-        <div className="mt-auto space-y-2 border-t border-white/5 pt-4">
-          {event.dateStr && (
-            <div className="flex items-center gap-2.5 text-[11px] text-white/50">
-              <Calendar className="w-3.5 h-3.5 text-white/30 flex-shrink-0" />
-              <span className="font-mono uppercase tracking-wider truncate">{event.dateStr}</span>
+        {/* Meta pinned to bottom */}
+        <div className="mt-auto space-y-1.5 border-t border-white/[0.06] pt-3 flex-shrink-0">
+          {cleanDate && (
+            <div className="flex items-center gap-2 text-[10px] text-white/45">
+              <Calendar className="w-3 h-3 text-white/25 flex-shrink-0" />
+              <span className="font-mono uppercase tracking-wider truncate">
+                {cleanDate}
+              </span>
             </div>
           )}
           {event.speaker && (
-            <div className="flex items-center gap-2.5 text-[11px] text-white/50">
-              <User className="w-3.5 h-3.5 text-white/30 flex-shrink-0" />
-              <span className="truncate">{event.speaker}</span>
+            <div className="flex items-start gap-2 text-[10px] text-white/45">
+              <User className="w-3 h-3 text-white/25 flex-shrink-0 mt-px" />
+              <span className="line-clamp-2 leading-tight">{event.speaker}</span>
             </div>
           )}
           {event.venue && (
-            <div className="flex items-center gap-2.5 text-[11px] text-white/50">
-              <MapPin className="w-3.5 h-3.5 text-white/30 flex-shrink-0" />
-              <span className="truncate">{event.venue}</span>
+            <div className="flex items-start gap-2 text-[10px] text-white/45">
+              <MapPin className="w-3 h-3 text-white/25 flex-shrink-0 mt-px" />
+              <span className="line-clamp-2 leading-tight">{event.venue}</span>
             </div>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
