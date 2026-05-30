@@ -39,6 +39,15 @@ function parseEventsMarkdown(
     const imageMatch = block.match(/<img\s+src="([^"]+)"/i);
 
     if (titleMatch) {
+      let imageUrl = imageMatch ? imageMatch[1].trim() : undefined;
+      if (imageUrl) {
+        // Encode spaces and convert github.com blob links to direct raw links
+        imageUrl = imageUrl.replace(/ /g, "%20");
+        if (imageUrl.includes("github.com") && imageUrl.includes("/blob/")) {
+          imageUrl = imageUrl.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/");
+        }
+      }
+
       events.push({
         id: `${status}-${index}`,
         title: titleMatch[1].trim(),
@@ -46,7 +55,7 @@ function parseEventsMarkdown(
         topic: topicMatch ? topicMatch[1].trim() : undefined,
         venue: venueMatch ? venueMatch[1].trim() : undefined,
         dateStr: dateMatch ? dateMatch[1].trim() : undefined,
-        imageUrl: imageMatch ? encodeURI(imageMatch[1].trim()) : undefined,
+        imageUrl,
         status,
       });
     }

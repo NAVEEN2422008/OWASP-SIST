@@ -17,17 +17,16 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
     target: targetRef,
   });
 
-  // Calculate horizontal translation.
-  // We translate the track by its total width (-100%) minus one viewport width (+100vw) 
-  // so the last card aligns perfectly with the right edge of the screen on any device.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
+  // Calculate horizontal translation based on number of events.
+  // We want the total scrollable horizontal width to scale with the number of items.
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-black">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         
-        {/* Timeline Header Area - Fixed on the left or moving slightly */}
-        <div className="absolute top-20 left-6 md:left-24 z-10 flex flex-col pointer-events-none">
+        {/* Timeline Header Area - Normal flow to prevent overlap */}
+        <div className="px-6 md:px-24 z-10 flex flex-col pointer-events-none mb-8 sm:mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +41,7 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
         </div>
 
         {/* The horizontal moving track */}
-        <motion.div style={{ x }} className="flex w-max gap-8 px-6 md:px-24 pt-32 pb-16 items-center">
+        <motion.div style={{ x }} className="flex gap-8 px-6 md:px-24 items-center w-max">
           
           {events.length === 0 ? (
             <div className="text-white/40 italic flex-shrink-0 w-80 text-center border border-white/10 p-10 rounded-2xl">
