@@ -15,6 +15,7 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
   
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"],
   });
 
   // Calculate horizontal translation based on number of events.
@@ -22,26 +23,27 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-black">
-      <div className="sticky top-0 flex h-screen flex-col justify-start pt-16 md:pt-24 pb-6 overflow-hidden">
-        
-        {/* Timeline Header Area - Normal flow to prevent overlap */}
-        <div className="px-6 md:px-24 z-10 flex flex-col pointer-events-none mb-4 sm:mb-8">
-          <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-heading font-light tracking-tight text-white mb-2"
-          >
-            Operation Timeline
-          </motion.h2>
-          <p className="text-white/50 text-sm md:text-base font-light tracking-wide max-w-sm">
-            Scroll to explore our upcoming and completed missions. Data is fetched live from GitHub.
-          </p>
-        </div>
+    <div className="bg-black pt-24 md:pt-32 pb-12">
+      
+      {/* Timeline Header Area - Normal flow, scrolls naturally away */}
+      <div className="px-6 md:px-24 flex flex-col mb-16 md:mb-24">
+        <motion.h2 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-6xl font-heading font-light tracking-tight text-white mb-4"
+        >
+          Operation Timeline
+        </motion.h2>
+        <p className="text-white/50 text-sm md:text-base font-light tracking-wide max-w-sm">
+          Scroll to explore our upcoming and completed missions. Data is fetched live from GitHub.
+        </p>
+      </div>
 
-        {/* The horizontal moving track */}
-        <motion.div style={{ x }} className="flex gap-8 px-6 md:px-24 items-center w-max">
+      {/* Horizontal scrolling track area */}
+      <section ref={targetRef} className="relative h-[300vh]">
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+          <motion.div style={{ x }} className="flex gap-8 px-6 md:px-24 items-center w-max">
           
           {events.length === 0 ? (
             <div className="text-white/40 italic flex-shrink-0 w-80 text-center border border-white/10 p-10 rounded-2xl">
@@ -62,8 +64,9 @@ export default function EventsCarousel({ events }: EventsCarouselProps) {
           )}
 
         </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }
 
